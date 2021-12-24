@@ -1,0 +1,24 @@
+server:
+  port: 1221
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shirojwt?serverTimezone=UTC&characterEncoding=utf8
+    username: root
+    password: root
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.lzh.model.po
+
+logging:
+  level:
+    com.lzh.mapper: debug
+
+
+
+
+
+
