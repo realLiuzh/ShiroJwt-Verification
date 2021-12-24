@@ -16,6 +16,7 @@ public enum CustomExceptionType {
     SYSTEM_INNER_ERROR(-1, "系统内部错误"),
 
     PARAM_ERROR(1, "参数错误"),
+    VER_CODE_ERROR(2, "验证码错误"),
 
     NO_LOGIN(50, "未登录,请先登录后访问"),
     NO_PERMISSION(60, "您没有权限,请联系管理员"),

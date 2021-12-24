@@ -28,6 +28,30 @@ public interface Constant {
      */
     String HTTP_HEADER_TOKEN = "token";
 
+    /**
+     * sms-secretId
+     */
+    String SMS_SECRET_ID = "AKIDPcZFn68tOcZFemeFZdRxCBtLWWGjvqUr";
+
+    /**
+     * sms-secretKey
+     */
+    String SMS_SECRET_KEY = "7xYsugCSWXHm0yf5F8kALFsEJ8gxykFT";
+
+    /**
+     * sms-sdkAppId
+     */
+    String SMS_SDK_APP_ID = "1400609863";
+
+    /**
+     * sms-signName
+     */
+    String SMS_SIGN_NAME = "机务维修常识";
+
+    /**
+     * sms-templateId
+     */
+    String SMS_TEMPLATE_ID = "1236911";
 
 
 }

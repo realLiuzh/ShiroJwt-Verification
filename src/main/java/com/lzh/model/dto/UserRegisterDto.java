@@ -1,11 +1,13 @@
 package com.lzh.model.dto;
 
+import com.lzh.anno.Phone;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import static com.lzh.data.Constant.*;
 
@@ -19,10 +21,24 @@ import static com.lzh.data.Constant.*;
 public class UserRegisterDto {
 
     @NotNull
-    @Length(min = 6,max = 12)
+    @Length(min = 6, max = 12)
     private String username;
 
     @NotNull
-    @Length(min = 6,max = 20)
+    @Length(min = 6, max = 20)
     private String password;
+
+    /**
+     * 验证码
+     */
+    @NotNull
+    @Length(min = 6, max = 6)
+    private String verCode;
+
+    /**
+     * 手机号
+     */
+    @NotNull
+    @Phone
+    private String phone;
 }

@@ -70,6 +70,7 @@ public class ShiroConfig {
         Map<String, String> map = new HashMap<>();
         map.put("/user/login", "anon");
         map.put("/user/register", "anon");
+        map.put("/user/sendVerCode","anon");
         map.put("/**", "jwtFilter");
 
         factoryBean.setFilterChainDefinitionMap(map);
