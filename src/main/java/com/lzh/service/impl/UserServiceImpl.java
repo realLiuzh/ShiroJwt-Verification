@@ -7,8 +7,7 @@ import com.lzh.service.UserService;
 import com.lzh.util.AssertUtil;
 import com.lzh.util.EncryptUtil;
 import com.lzh.util.JwtUtil;
-import com.lzh.util.SmsUtils;
-import org.jasypt.util.password.BasicPasswordEncryptor;
+import com.lzh.util.SmsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -72,7 +71,7 @@ public class UserServiceImpl implements UserService {
     public void sendVerCode(String phone) {
         String captcha = generateCaptcha();
         redisTemplate.boundValueOps(phone).set(captcha, 5, TimeUnit.MINUTES);
-        SmsUtils.sendSms(phone, captcha);
+        SmsUtil.sendSms(phone, captcha);
     }
 
     /**

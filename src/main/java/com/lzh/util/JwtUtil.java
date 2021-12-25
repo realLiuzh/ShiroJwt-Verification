@@ -4,8 +4,6 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.lzh.data.Constant;
-import com.lzh.exception.CustomException;
-import com.lzh.exception.CustomExceptionType;
 import org.apache.shiro.authc.AuthenticationException;
 
 import java.util.Date;

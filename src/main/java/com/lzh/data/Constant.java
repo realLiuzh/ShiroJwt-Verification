@@ -31,17 +31,17 @@ public interface Constant {
     /**
      * sms-secretId
      */
-    String SMS_SECRET_ID = "AKIDPcZFn68tOcZFemeFZdRxCBtLWWGjvqUr";
+    String SMS_SECRET_ID = "lzhAKIDPcZFn68tOcZFemeFZdRxCBtLWWGjvqUr";
 
     /**
      * sms-secretKey
      */
-    String SMS_SECRET_KEY = "7xYsugCSWXHm0yf5F8kALFsEJ8gxykFT";
+    String SMS_SECRET_KEY = "lzh7xYsugCSWXHm0yf5F8kALFsEJ8gxykFT";
 
     /**
      * sms-sdkAppId
      */
-    String SMS_SDK_APP_ID = "1400609863";
+    String SMS_SDK_APP_ID = "lzh1400609863";
 
     /**
      * sms-signName
@@ -51,7 +51,7 @@ public interface Constant {
     /**
      * sms-templateId
      */
-    String SMS_TEMPLATE_ID = "1236911";
+    String SMS_TEMPLATE_ID = "lzh1236911";
 
 
 }

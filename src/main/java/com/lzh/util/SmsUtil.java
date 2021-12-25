@@ -16,7 +16,7 @@ import static com.lzh.data.Constant.*;
  * @author 志昊的刘
  * @date 2021/12/24
  */
-public class SmsUtils {
+public class SmsUtil {
 
     public static boolean sendSms(String phone, String captcha) {
         try {
