@@ -47,14 +47,20 @@
         from user
         where username = #{username};
     </select>
+    <select id="selectByPhone" resultType="com.lzh.model.po.User">
+        select *
+        from user
+        where phone = #{phone}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete
         from user
         where id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lzh.model.po.User" useGeneratedKeys="true">
-        insert into user (username, `password`, reg_time)
-        values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{regTime,jdbcType=TIMESTAMP})
+        insert into user (username, `password`, phone, reg_time)
+        values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+                #{regTime,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lzh.model.po.User"
             useGeneratedKeys="true">

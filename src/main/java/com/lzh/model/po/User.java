@@ -35,15 +35,22 @@ public class User implements Serializable {
     private String password;
 
     /**
+     * 手机号
+     */
+    private String phone;
+
+    /**
      * 注册时间
      */
     private Date regTime;
 
+
     private static final long serialVersionUID = 1L;
 
-    public User(String username, String password, Date regTime) {
+    public User(String username, String password, String phone, Date regTime) {
         this.username = username;
         this.password = password;
+        this.phone = phone;
         this.regTime = regTime;
     }
 }

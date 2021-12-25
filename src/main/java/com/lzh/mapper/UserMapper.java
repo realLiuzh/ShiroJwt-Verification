@@ -22,4 +22,6 @@ public interface UserMapper {
     UserDto selectRoleByUserName(String username);
 
     int checkUserNameIsValid(String username);
+
+    User selectByPhone(String phone);
 }

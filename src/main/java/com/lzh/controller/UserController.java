@@ -2,7 +2,8 @@ package com.lzh.controller;
 
 import com.lzh.anno.Phone;
 import com.lzh.data.Response;
-import com.lzh.model.dto.UserLoginDto;
+import com.lzh.model.dto.PhoneLoginDto;
+import com.lzh.model.dto.UsernameLoginDto;
 import com.lzh.model.dto.UserRegisterDto;
 import com.lzh.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -23,17 +24,23 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/login")
-    public Response login(@RequestBody @Validated UserLoginDto userLoginDto) {
-        String token = userService.loginUser(userLoginDto.getUsername(), userLoginDto.getPassword());
+    @PostMapping("/usernameLogin")
+    public Response loginWithUsernamePassword(@RequestBody @Validated UsernameLoginDto usernameLoginDto) {
+        String token = userService.loginWithUsernamePassword(usernameLoginDto.getUsername(), usernameLoginDto.getPassword());
         return Response.success(token);
     }
 
+    @PostMapping("/phoneLogin")
+    public Response loginWithPhone(@RequestBody @Validated PhoneLoginDto phoneLoginDto) {
+        String token = userService.loginWithPhone(phoneLoginDto.getPhone(), phoneLoginDto.getVerCode());
+        return Response.success(token);
+    }
+
+
     @PostMapping("/register")
     public Response register(@RequestBody @Validated UserRegisterDto userRegisterDto) {
-        log.info("register.....");
         userService.checkVerCode(userRegisterDto.getPhone(), userRegisterDto.getVerCode());
-        userService.registerUser(userRegisterDto.getUsername(), userRegisterDto.getPassword());
+        userService.registerUser(userRegisterDto.getUsername(), userRegisterDto.getPassword(), userRegisterDto.getPhone());
         return Response.success();
     }
 

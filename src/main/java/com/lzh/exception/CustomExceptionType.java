@@ -24,6 +24,7 @@ public enum CustomExceptionType {
     TOKEN_VERIFY(100, "token校验错误"),
     TOKEN_EMPTY(101, "token为空"),
 
+    NO_ACCOUNT(140, "请先注册"),
     ACCOUNT_ERROR(150, "用户名或密码错误"),
     USERNAME_USED(160, "用户名已经被占用");
 

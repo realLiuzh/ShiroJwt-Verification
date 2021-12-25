@@ -18,6 +18,9 @@ import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import static com.lzh.exception.CustomExceptionType.NO_ACCOUNT;
+import static com.lzh.exception.CustomExceptionType.VER_CODE_ERROR;
+
 /**
  * @author 志昊的刘
  * @date 2021/12/21
@@ -34,28 +37,32 @@ public class UserServiceImpl implements UserService {
      * 用户登录
      */
     @Override
-    public String loginUser(String username, String password) {
+    public String loginWithUsernamePassword(String username, String password) {
         User user = userMapper.selectByUsername(username);
         AssertUtil.isTrue(user == null, CustomExceptionType.ACCOUNT_ERROR);
-        String encryptPassword = EncryptUtil.encryptor(password);
-        BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
-        AssertUtil.isTrue(!passwordEncryptor.checkPassword(password, user.getPassword()), CustomExceptionType.ACCOUNT_ERROR);
+        EncryptUtil.checkPassword(password, user.getPassword());
         return JwtUtil.getToken(user.getUsername());
     }
 
 
+    /**
+     * 用户注册
+     */
     @Override
-    public void registerUser(String username, String password) {
+    public void registerUser(String username, String password, String phone) {
 
         int flag = userMapper.checkUserNameIsValid(username);
         AssertUtil.isTrue(flag != 0, CustomExceptionType.USERNAME_USED);
-        User user = new User(username, EncryptUtil.encryptor(password), new Date());
+        User user = new User(username, EncryptUtil.encryptor(password), phone, new Date());
         userMapper.insert(user);
     }
 
+    /**
+     * 检查用户名的合法性
+     */
     @Override
     public void checkVerCode(String phone, String verCode) {
-        AssertUtil.isTrue(!verCode.equals(redisTemplate.boundValueOps(phone).get()), CustomExceptionType.VER_CODE_ERROR);
+        AssertUtil.isTrue(!verCode.equals(redisTemplate.boundValueOps(phone).get()), VER_CODE_ERROR);
     }
 
     /**
@@ -66,6 +73,17 @@ public class UserServiceImpl implements UserService {
         String captcha = generateCaptcha();
         redisTemplate.boundValueOps(phone).set(captcha, 5, TimeUnit.MINUTES);
         SmsUtils.sendSms(phone, captcha);
+    }
+
+    /**
+     * 手机-验证码方式登录登录
+     */
+    @Override
+    public String loginWithPhone(String phone, String verCode) {
+        checkVerCode(phone, verCode);
+        User user = userMapper.selectByPhone(phone);
+        AssertUtil.isTrue(user == null, NO_ACCOUNT);
+        return JwtUtil.getToken(user.getUsername());
     }
 
     /**

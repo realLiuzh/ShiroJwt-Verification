@@ -68,7 +68,8 @@ public class ShiroConfig {
 
         //设置拦截路径 (与JwtFilter配合食用)
         Map<String, String> map = new HashMap<>();
-        map.put("/user/login", "anon");
+        map.put("/user/usernameLogin", "anon");
+        map.put("/user/phoneLogin", "anon");
         map.put("/user/register", "anon");
         map.put("/user/sendVerCode","anon");
         map.put("/**", "jwtFilter");

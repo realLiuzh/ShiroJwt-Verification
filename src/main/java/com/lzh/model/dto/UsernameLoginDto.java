@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserLoginDto {
+public class UsernameLoginDto {
 
     @NotNull
     @Length(min = 6, max = 12)

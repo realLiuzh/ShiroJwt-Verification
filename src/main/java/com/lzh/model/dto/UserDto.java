@@ -19,8 +19,8 @@ public class UserDto extends User {
     //一个用户只有一个角色
     private Role role;
 
-    public UserDto(Integer id, String username, String password, Date regTime, Role role) {
-        super(id, username, password, regTime);
+    public UserDto(Integer id, String username, String password, String phone, Date regTime, Role role) {
+        super(id, username, password, phone, regTime);
         this.role = role;
     }
 }
